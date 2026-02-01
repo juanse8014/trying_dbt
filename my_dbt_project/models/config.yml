@@ -1,0 +1,35 @@
+models:
+  - name: stg_customers
+    description: Staged customer data from order management system (OMS), with minor row-level transformations.  
+    columns:
+      - name: Email
+        description: Customer's Primay Email address for promotions and offers.      
+        tests:
+          - string_not_empty
+
+  - name: stg_employees
+    description: Staged employees data from order management system (oms), with minor row-level transformations.  
+    columns:
+      - name: JobTitle
+        description: Employee's Job Title based on his current Roles and Responsibilities.      
+        tests:
+          - string_not_empty
+
+  - name: stg_orders
+    description: Staged orders data from order management system (oms), with minor row-level transformations.  
+    columns:
+      - name: OrderID
+        description: The primary key for orders_stg table.      
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_order_items
+    description: Staged order items data from order management system (oms), with minor row-level transformations.   
+    columns:
+      - name: OrderID
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_orders')
+                field: OrderID
