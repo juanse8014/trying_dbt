@@ -34,13 +34,13 @@ models:
     +transient: false
     # Config indicated by + and applies to all files under models/example/
     stg_customers:
-      schema: L2_PROCESSING
+      +schema: L2_PROCESSING
     stg_orders:
-      schema: L2_PROCESSING
+      +schema: L2_PROCESSING
     stg_order_items:
-      schema: L2_PROCESSING
-    customer_renevue:
-      materialized: table
+      +schema: L2_PROCESSING
+    customer_revenue:
+      +materialized: table
     fact_orders:
-      materialized: table
-      schema: L2_PROCESSING
+      +materialized: table
+      +schema: L2_PROCESSING
